@@ -18,6 +18,7 @@ public class Main {
              sites=  crawler.getLinks("http://www.Touro.edu/");
 
 
+
         for(int i =0;i<10000000;i++) {
              System.out.println(i);
             System.out.println(sites.get(i));

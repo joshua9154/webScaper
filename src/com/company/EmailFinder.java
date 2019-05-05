@@ -71,7 +71,7 @@ public class EmailFinder {
     //    System.out.println("Extracted Email Addresses: ");
     ArrayList<String> temp = new ArrayList<>();
         for (String emails : emailAddresses) {
-             //   System.out.println(emails);
+                System.out.println(emails);
            if(emails.contains(".edu")||emails.contains(".com")||emails.contains(".gov")||emails.contains(".org"))
                 temp.add(emails);
                 }

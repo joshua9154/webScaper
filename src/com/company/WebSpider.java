@@ -16,12 +16,17 @@ public class WebSpider {
     private EmailFinder finder;
     private int marker =10;
 
-    public ArrayList getLinks(String URL) {
+    public ArrayList<String> getEmails() {
+        return emails;
+    }
+
+    public ArrayList getLinks(String URL, HashSet<String> Links) {
+        this.links=links;
         ArrayList<String> sites= new ArrayList<>();
         if (!links.contains(URL)) {
             try {
                 links.add(URL);
-             //   System.out.println(URL);
+                System.out.println(URL);
                 Document document = Jsoup.connect(URL).get();
                 Elements linksOnPage = document.select("a[href]");
                 finder = new EmailFinder(URL);

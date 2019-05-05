@@ -20,8 +20,8 @@ public class Main {
 
 
         for(int i =0;i<10000000;i++) {
-             System.out.println(i);
-            System.out.println(sites.get(i));
+            //System.out.println(i);
+            //System.out.println(sites.get(i));
             ArrayList<String> temp=(crawler.getLinks(sites.get(i)));
             for (String j:temp) {
                 if(!sites.contains(j))

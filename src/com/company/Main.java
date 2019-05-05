@@ -70,9 +70,11 @@ class spiders extends Thread {
                 // System.out.println(i);
             }
         }
-        System.out.println("ID "+Thread.currentThread().getId());
-        System.out.println(SharedObject.emailList.size());
-        System.out.println(SharedObject.emailList.toString());
+        //System.out.println("ID "+Thread.currentThread().getId());
+       // System.out.println("Sites Found "+SharedObject.siteList.size());
+       // System.out.println("Sites Visted "+SharedObject.vistedSites.size());
+        System.out.println("Emails Found "+SharedObject.emailList.size());
+      //  System.out.println(SharedObject.emailList.toString());
        // System.out.println(Thread.currentThread().getId());
        /* WebSpider crawler = new WebSpider();
         sitesFound = crawler.getLinks(startLink);
@@ -92,8 +94,8 @@ public class Main {
 
         SharedObject.siteList = crawler.getLinks("http://www.Touro.edu/");
 
-        final int MaxRunnables = 50;
-        ExecutorService ex = Executors.newFixedThreadPool(4);
+        final int MaxRunnables = 100000;
+        ExecutorService ex = Executors.newFixedThreadPool(10);
         for (int i = 0; i < MaxRunnables; i++) {
             Runnable runnable1 = new spiders();
             ex.execute(runnable1);

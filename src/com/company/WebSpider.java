@@ -20,13 +20,13 @@ public class WebSpider {
         return emails;
     }
 
-    public ArrayList getLinks(String URL, HashSet<String> Links) {
+    public ArrayList getLinks(String URL) {
         this.links=links;
         ArrayList<String> sites= new ArrayList<>();
         if (!links.contains(URL)) {
             try {
                 links.add(URL);
-                System.out.println(URL);
+               // System.out.println(URL);
                 Document document = Jsoup.connect(URL).get();
                 Elements linksOnPage = document.select("a[href]");
                 finder = new EmailFinder(URL);
@@ -38,8 +38,9 @@ public class WebSpider {
                         emails.add(temp.get(i));
                         if(emails.size()==marker){
                             marker=marker+10;
-                            System.out.println(emails.size());
-                            System.out.println(emails.toString());}
+                       //     System.out.println(emails.size());
+                        //    System.out.println(emails.toString());
+                            }
 
                     }
                 }

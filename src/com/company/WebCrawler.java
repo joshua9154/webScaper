@@ -53,6 +53,7 @@ class WebCrawler {
                 }
             } catch (IOException e) {
                 System.err.println("For '" + URL + "': " + e.getMessage());
+
             }
         }
     }

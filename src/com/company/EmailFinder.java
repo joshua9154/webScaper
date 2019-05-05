@@ -42,6 +42,7 @@ public class EmailFinder {
             while ((input = read.readLine()) != null) {
                 contents.append(input);
             }
+            extractEmail();
         } catch (IOException ex) {
             System.out.println("Unable to read URL due to Unknown Host..");
         }
@@ -56,6 +57,7 @@ public class EmailFinder {
         while (match.find()) {
             emailAddresses.add(match.group());
         }
+
     }
 
     public Set<String> getEmailAddresses() {
@@ -69,7 +71,7 @@ public class EmailFinder {
     //    System.out.println("Extracted Email Addresses: ");
     ArrayList<String> temp = new ArrayList<>();
         for (String emails : emailAddresses) {
-                System.out.println(emails);
+             //   System.out.println(emails);
                 temp.add(emails);
                 }
                 return temp;

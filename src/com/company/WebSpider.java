@@ -6,67 +6,52 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 
-class WebCrawler {
-    private final int MAX_DEPTH = 10;
+public class WebSpider {
     private HashSet<String> links = new HashSet<>();
     private ArrayList<String> emails = new ArrayList<>();
-    private ArrayList<String> websites = new ArrayList<>();
-    private ArrayList<String> uniqueWebsites= new ArrayList<>();
     private EmailFinder finder;
-    private int marker =50;
+    private int marker =10;
 
-    public HashSet<String> getLinks() {
-        return links;
-    }
-
-    public ArrayList<String> getEmails() {
-        return emails;
-    }
-
-    public void getPageLinks(String URL, int depth) {
-        if ((!links.contains(URL)
-              && depth < MAX_DEPTH
-        )) {
+    public ArrayList getLinks(String URL) {
+        ArrayList<String> sites= new ArrayList<>();
+        if (!links.contains(URL)) {
             try {
                 links.add(URL);
-                //System.out.println(URL);
-
+             //   System.out.println(URL);
                 Document document = Jsoup.connect(URL).get();
                 Elements linksOnPage = document.select("a[href]");
                 finder = new EmailFinder(URL);
                 finder.readContents();
-                finder.extractEmail();
+               // finder.extractEmail();
                 ArrayList<String> temp = finder.printAddresses();
                 for (int i = 0; i < temp.size(); i++) {
                     if (!emails.contains(temp.get(i))) {
                         emails.add(temp.get(i));
                         if(emails.size()==marker){
-                            marker=marker+50;
+                            marker=marker+10;
                             System.out.println(emails.size());
                             System.out.println(emails.toString());}
 
                     }
                 }
 
-                depth++;
                 for (Element page : linksOnPage) {
 
-                    if(page.attr("href").contains("https")){
-                  //      System.out.println(page);
-                     //   if(!page.attr("href").contains("github")){
-                    getPageLinks(page.attr("abs:href"), depth);}
-                //}
+                    if (page.attr("href").contains("https")) {
+                               sites.add(page.attr("abs:href"));
+                     //   getLinks(page.attr("abs:href"));
 
+                    }
                 }
             } catch (IOException e) {
-              //  System.err.println("For '" + URL + "': " + e.getMessage());
 
             }
+
         }
+return sites;
     }
-
-
 }

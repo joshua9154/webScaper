@@ -31,9 +31,8 @@ class spiders extends Thread {
             }
             {
                 WebSpider crawler = new WebSpider();
-                Random rand = new Random();
+               Random rand = new Random();
                 int r = rand.nextInt(SharedObject.siteList.size() - 1);
-                SharedObject.siteList.get(r);
                 if (!SharedObject.visitedSites.contains(SharedObject.siteList.get(r))) {
 
                     SharedObject.visitedSites.add(SharedObject.siteList.get(r));
@@ -51,6 +50,7 @@ class spiders extends Thread {
                     }
                 }
 
+
             }
         }
       //  System.out.println("ID " + currentThread().getId());
@@ -58,7 +58,7 @@ class spiders extends Thread {
         // System.out.println("Sites Visted "+SharedObject.visitedSites.size());
         System.out.println("Emails Found " + SharedObject.emailList.size());
        // System.out.println(SharedObject.emailList.get(SharedObject.emailList.size() - 1));
-        System.out.println(SharedObject.emailList.toString());
+    //    System.out.println(SharedObject.emailList.toString());
         // System.out.println(Thread.currentThread().getId());
 
     }
@@ -72,7 +72,7 @@ public class Main {
         SharedObject.siteList = crawler.getLinks("http://www.Touro.edu/");
 
         final int MaxRunnables = 1000000;
-        ExecutorService ex = Executors.newFixedThreadPool(50);
+        ExecutorService ex = Executors.newFixedThreadPool(100);
         for (int i = 0; i < MaxRunnables; i++) {
             Runnable runnable1 = new spiders();
             ex.execute(runnable1);

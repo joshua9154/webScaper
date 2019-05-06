@@ -23,7 +23,7 @@ public class WebSpider {
         try {
             Document document = Jsoup.connect(URL).get();
             Elements linksOnPage = document.select("a[href]");
-
+           // System.out.println(URL);
             finder = new EmailFinder(URL);
             finder.readContents();
             emails = finder.printAddresses();

@@ -44,7 +44,7 @@ public class EmailFinder {
             }
             extractEmail();
         } catch (IOException ex) {
-            System.out.println("Unable to read URL due to Unknown Host..");
+          //  System.out.println("Unable to read URL due to Unknown Host..  "+url);
         }
     }
 

@@ -60,22 +60,16 @@ public class EmailFinder {
 
     }
 
-    public Set<String> getEmailAddresses() {
-        return emailAddresses;
-    }
 
     public ArrayList printAddresses() {
-        //Check if email addresses have been extracted
-        //  if(emailAddresses.size() &amp;amp;gt; 0) {
-        //Print out all the extracted emails
-    //    System.out.println("Extracted Email Addresses: ");
-    ArrayList<String> temp = new ArrayList<>();
-        for (String emails : emailAddresses) {
-             //   System.out.println(emails);
-           if(emails.contains(".edu")||emails.contains(".com")||emails.contains(".gov")||emails.contains(".org"))
-                temp.add(emails);
-                }
-                return temp;
 
-                }
-                }
+        ArrayList<String> temp = new ArrayList<>();
+        for (String emails : emailAddresses) {
+            //   System.out.println(emails);
+            if (emails.contains(".edu") || emails.contains(".com") || emails.contains(".gov") || emails.contains(".org"))
+                temp.add(emails);
+        }
+        return temp;
+
+    }
+}

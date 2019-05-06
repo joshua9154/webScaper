@@ -11,12 +11,13 @@ class SharedObject{
     public static List<String> emailList = Collections.synchronizedList(new ArrayList<String>());
     public static List<String> vistedSites = Collections.synchronizedList(new ArrayList<String>());
 
+
 }
 
 class spiders extends Thread {
     static Object lock = new Object();
-    static final int MAX_COUNT = 10;
-    private String startLink;
+    static final int MAX_COUNT = 20;
+  //  private String startLink;
     private ArrayList<String> sitesFound;
     private ArrayList<String> emailsFound;
   /*  private HashSet<String> siteLists;
@@ -70,11 +71,11 @@ class spiders extends Thread {
                 // System.out.println(i);
             }
         }
-        //System.out.println("ID "+Thread.currentThread().getId());
+        System.out.println("ID "+Thread.currentThread().getId());
        // System.out.println("Sites Found "+SharedObject.siteList.size());
        // System.out.println("Sites Visted "+SharedObject.vistedSites.size());
         System.out.println("Emails Found "+SharedObject.emailList.size());
-      //  System.out.println(SharedObject.emailList.toString());
+        System.out.println(SharedObject.emailList.get(SharedObject.emailList.size()-1));
        // System.out.println(Thread.currentThread().getId());
        /* WebSpider crawler = new WebSpider();
         sitesFound = crawler.getLinks(startLink);
@@ -86,15 +87,15 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         WebSpider crawler = new WebSpider();
-        HashSet<String> siteLists = new HashSet<>();
+      /*  HashSet<String> siteLists = new HashSet<>();
         ArrayList<String> emailList = new ArrayList<>();
         int threadCount = 2;
         int iterations = 10;
-        ArrayList<String> sites;
+        ArrayList<String> sites;*/
 
         SharedObject.siteList = crawler.getLinks("http://www.Touro.edu/");
 
-        final int MaxRunnables = 100000;
+        final int MaxRunnables = 1000000;
         ExecutorService ex = Executors.newFixedThreadPool(10);
         for (int i = 0; i < MaxRunnables; i++) {
             Runnable runnable1 = new spiders();
